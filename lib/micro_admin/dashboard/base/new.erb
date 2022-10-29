@@ -1,0 +1,28 @@
+<header class="navbar border-bottom py-4">
+  <h2 class="m-0">Create <%= model_class.name %></h2>
+  <div>
+    <a
+      href="<%= "/admin/#{model_class.name.underscore}" %>"
+      class="btn btn-primary">
+        Back to index
+    </a>
+  </div>
+</header>
+
+<main class="p-4">
+  <% if @errors.present? %>
+  <ul class="alert alert-danger">
+    <% @errors.each do |error| %>
+    <li class="ml-3"><%= error %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  <form method="post" action="/admin/#{model_class.name.underscore}">
+    <% form_attributes.each do |attribute| %>
+    <div class="mb-3">
+      <label><%= attribute %></label>
+      <%= render "new/#{attribute}" %>
+    </div>
+    <% end %>
+  </form>
+</main>

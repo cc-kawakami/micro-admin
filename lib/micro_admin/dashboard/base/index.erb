@@ -1,0 +1,44 @@
+<header class="navbar border-bottom p-4">
+  <h2 class="m-0"><%= model_class.name %></h2>
+  <div>
+    <a
+      href="<%= "/admin/#{model_class.name.underscore}/new" %>"
+      class="btn btn-primary">
+        new
+    </a>
+  </div>
+</header>
+
+<main class="p-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <% index_attributes.each do |attribute| %>
+        <th scope="col"><%= attribute %></th>
+        <% end %>
+        <th scope="col">show</th>
+        <th scope="col">edit</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @resources.each do |record| %>
+      <tr>
+        <% index_attributes.each do |attribute| %>
+        <td><%= record.send(attribute) %></td>
+        <% end %>
+        <td>
+          <a href="<%= "/admin/#{model_class.name.underscore}/#{record.id}" %>">
+            show
+          </a>
+        </td>
+        <td>
+          <a href="<%= "/admin/#{model_class.name.underscore}/#{record.id}/edit" %>">
+            edit
+          </a>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</main>

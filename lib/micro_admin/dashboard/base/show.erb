@@ -1,0 +1,19 @@
+<header class="navbar border-bottom p-4">
+  <h2 class="m-0">Show <%= model_class.name %></h2>
+  <div>
+    <a
+      href="<%= "/admin/#{model_class.name.underscore}" %>"
+      class="btn btn-primary">
+        Back
+    </a>
+  </div>
+</header>
+
+<main class="p-4">
+  <dl>
+    <% show_attributes.each do |attribute| %>
+    <dt><%= attribute %></dt>
+    <dd><%= @resource.send(attribute) %></dd>
+    <% end %>
+  </dl>
+</main>
