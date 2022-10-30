@@ -20,7 +20,7 @@
   <form method="post" action="/admin/#{model_class.name.underscore}">
     <% form_attributes.each do |attribute| %>
     <div class="mb-3">
-      <label><%= attribute %></label>
+      <label for="<%= attribute %>" class="form-label"><%= attribute %></label>
       <%= render "new/#{attribute}" %>
     </div>
     <% end %>

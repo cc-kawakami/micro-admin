@@ -20,7 +20,7 @@
   <form method="patch" action="<%= "/admin/#{model_class.name.underscore}/#{@id}" %>">
     <% form_attributes.each do |attribute| %>
     <div class="mb-3">
-      <label><%= attribute %></label>
+      <label for="<%= attribute %>" class="form-label"><%= attribute %></label>
       <%= render ({view: "edit/#{attribute}", locals: {value: @values[attribute]}}) %>
     </div>
     <% end %>
