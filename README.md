@@ -66,7 +66,7 @@ dashboard = UserDashboard.new
 ```
 
 ```erb
-<%= dashboard.index(errors: [smith, jams]) %>
+<%= dashboard.index([smith, jams]) %>
 ```
 
 ```erb
