@@ -47,13 +47,13 @@ class UserDashboard < ApplicationDashboard
 end
 ```
 
-`/app/views/dashboards/user_dashboard/new.erb`:
+`/app/views/dashboards/user_dashboard/new/name.erb`:
 
 ```html
 <input type="text" name="name">
 ```
 
-`/app/views/dashboards/user_dashboard/edit.erb`:
+`/app/views/dashboards/user_dashboard/edit/name.erb`:
 
 ```html
 <input type="text" name="name" value="<%= value %>">
