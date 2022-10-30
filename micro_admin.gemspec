@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "micro_admin/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "micro-admin"
+  spec.name          = "micro_admin"
   spec.version       = MicroAdmin::VERSION
   spec.authors       = ["cc-kawakami"]
   spec.email         = ["me@moeki.dev"]

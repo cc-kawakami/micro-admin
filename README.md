@@ -7,7 +7,7 @@ A Minimal Administration dashboard parts.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'micro-admin'
+gem 'micro_admin'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install micro-admin
+    $ gem install micro_admin
 
 ## Usage
 
