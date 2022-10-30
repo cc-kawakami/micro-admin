@@ -50,35 +50,142 @@ end
 `/app/views/dashboards/user_dashboard/new/name.erb`:
 
 ```html
-<input type="text" name="name">
+<input type="text" name="name" class="form-control">
 ```
 
 `/app/views/dashboards/user_dashboard/edit/name.erb`:
 
 ```html
-<input type="text" name="name" value="<%= value %>">
+<input type="text" name="name" value="<%= value %>" class="form-control">
 ```
 
 ```ruby
 smith = User.new(id: 1, name: "Smith")
-jams = User.new(id: 1, name: "Jams")
+james = User.new(id: 1, name: "James")
 dashboard = UserDashboard.new
 ```
 
 ```erb
-<%= dashboard.index([smith, jams]) %>
+<%= dashboard.index([smith, james]) %>
 ```
+
+output:
+```html
+<header class="navbar border-bottom p-4">
+  <h2 class="m-0">User</h2>
+  <div>
+    <a href="/admin/user/new" class="btn btn-primary">
+      new
+    </a>
+  </div>
+</header>
+
+<main class="p-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">show</th>
+        <th scope="col">edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Smith</td>
+        <td><a href="/admin/user/1">show</a></td>
+        <td><a href="/admin/user/1/edit">edit</a>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>James</td>
+        <td><a href="/admin/user/2">show</a></td>
+        <td><a href="/admin/user/2/edit">edit</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+```
+
 
 ```erb
 <%= dashboard.show(smith) %>
+```
+
+output:
+
+```html
+<header class="navbar border-bottom p-4">
+  <h2 class="m-0">Show User</h2>
+  <div>
+    <a href="/admin/user" class="btn btn-primary">
+      Back
+    </a>
+  </div>
+</header>
+
+<main class="p-4">
+  <dl>
+    <dt>id></dt>
+    <dd>1</dd>
+    <dt>name</dt>
+    <dd>Smith</dd>
+  </dl>
+</main>
 ```
 
 ```erb
 <%= dashboard.new(errors: ["Name is required!"]) %>
 ```
 
+output:
+```html
+<header class="navbar border-bottom py-4">
+  <h2 class="m-0">Create User</h2>
+  <div>
+    <a href="/admin/user" class="btn btn-primary">
+      Back to index
+    </a>
+  </div>
+</header>
+<main class="p-4">
+  <ul class="alert alert-danger">
+    <li class="ml-3">Name is required</li>
+  </ul>
+  <form method="post" action="/admin/user">
+    <div class="mb-3">
+      <label for="name" class="form-label">name</label>
+      <input type="text" name="name" class="form-control"/>
+    </div>
+  </form>
+</main>
+```
+
 ```erb
 <%= dashboard.edit(id: 1, values: {name: "Smith"}, errors: []) %>
+```
+
+output:
+```html
+<header class="navbar border-bottom py-4">
+  <h2 class="m-0">Create User</h2>
+  <div>
+    <a href="/admin/user" class="btn btn-primary">
+      Back to index
+    </a>
+  </div>
+</header>
+<main class="p-4">
+  <form method="patch" action="/admin/user/1">
+    <div class="mb-3">
+      <label for="name" class="form-label">name</label>
+      <input type="text" name="name" value="test" class="form-control"/>
+    </div>
+  </form>
+</main>
 ```
 
 **You can decorate table and forms with [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/download/)!**
