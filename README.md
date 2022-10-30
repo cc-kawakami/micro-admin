@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ```ruby
 class ApplicationDashboard < MicroAdmin::Dashboard::Base
-    # If you use with Ruby on Rails
+    # example:
     self.view_paths = [Rails.root.join("app", "views", "dashboards")]
 end
 ```
