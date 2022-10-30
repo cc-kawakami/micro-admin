@@ -81,7 +81,7 @@ dashboard = UserDashboard.new
 <%= dashboard.edit(id: 1, values: {name: "Smith"}, errors: []) %>
 ```
 
-You can decorate table and forms with [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/download/)!
+**You can decorate table and forms with [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/download/)!**
 
 ## Development
 
