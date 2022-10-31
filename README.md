@@ -24,6 +24,7 @@ Or install it yourself as:
 class ApplicationDashboard < MicroAdmin::Dashboard::Base
     # example:
     self.view_paths = [Rails.root.join("app", "views", "dashboards")]
+    self.url_base = "/admin"
 end
 ```
 
@@ -47,6 +48,14 @@ class UserDashboard < ApplicationDashboard
 end
 ```
 
+Setup routing.
+
+```ruby
+namespace :admin do
+  resources :users
+end
+```
+
 `/app/views/dashboards/user_dashboard/new/name.erb`:
 
 ```html
@@ -54,6 +63,8 @@ end
 ```
 
 `/app/views/dashboards/user_dashboard/edit/name.erb`:
+
+`value` is available.s
 
 ```html
 <input type="text" name="name" value="<%= value %>" class="form-control">
@@ -74,7 +85,7 @@ output:
 <header class="navbar border-bottom p-4">
   <h2 class="m-0">User</h2>
   <div>
-    <a href="/admin/user/new" class="btn btn-primary">
+    <a href="/admin/users/new" class="btn btn-primary">
       new
     </a>
   </div>
@@ -94,15 +105,15 @@ output:
       <tr>
         <td>1</td>
         <td>Smith</td>
-        <td><a href="/admin/user/1">show</a></td>
-        <td><a href="/admin/user/1/edit">edit</a>
+        <td><a href="/admin/users/1">show</a></td>
+        <td><a href="/admin/users/1/edit">edit</a>
         </td>
       </tr>
       <tr>
         <td>2</td>
         <td>James</td>
-        <td><a href="/admin/user/2">show</a></td>
-        <td><a href="/admin/user/2/edit">edit</a>
+        <td><a href="/admin/users/2">show</a></td>
+        <td><a href="/admin/users/2/edit">edit</a>
         </td>
       </tr>
     </tbody>
@@ -121,7 +132,7 @@ output:
 <header class="navbar border-bottom p-4">
   <h2 class="m-0">Show User</h2>
   <div>
-    <a href="/admin/user" class="btn btn-primary">
+    <a href="/admin/users" class="btn btn-primary">
       Back
     </a>
   </div>
@@ -146,7 +157,7 @@ output:
 <header class="navbar border-bottom py-4">
   <h2 class="m-0">Create User</h2>
   <div>
-    <a href="/admin/user" class="btn btn-primary">
+    <a href="/admin/users" class="btn btn-primary">
       Back to index
     </a>
   </div>
@@ -155,7 +166,7 @@ output:
   <ul class="alert alert-danger">
     <li class="ml-3">Name is required</li>
   </ul>
-  <form method="post" action="/admin/user">
+  <form method="post" action="/admin/users">
     <div class="mb-3">
       <label for="name" class="form-label">name</label>
       <input type="text" name="name" class="form-control"/>
@@ -173,13 +184,13 @@ output:
 <header class="navbar border-bottom py-4">
   <h2 class="m-0">Create User</h2>
   <div>
-    <a href="/admin/user" class="btn btn-primary">
+    <a href="/admin/users" class="btn btn-primary">
       Back to index
     </a>
   </div>
 </header>
 <main class="p-4">
-  <form method="patch" action="/admin/user/1">
+  <form method="patch" action="/admin/users/1">
     <div class="mb-3">
       <label for="name" class="form-label">name</label>
       <input type="text" name="name" value="test" class="form-control"/>

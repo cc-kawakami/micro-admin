@@ -2,7 +2,7 @@
   <h2 class="m-0">Create <%= model_class.name %></h2>
   <div>
     <a
-      href="<%= "/admin/#{model_class.name.underscore}" %>"
+      href="<%= "#{self.class.url_base}/#{model_class.name.underscore.pluralize}" %>"
       class="btn btn-primary">
         Back to index
     </a>
@@ -17,7 +17,7 @@
     <% end %>
   </ul>
   <% end %>
-  <form method="patch" action="<%= "/admin/#{model_class.name.underscore}/#{@id}" %>">
+  <form method="patch" action="<%= "#{self.class.url_base}/#{model_class.name.underscore.pluralize}/#{@id}" %>">
     <% form_attributes.each do |attribute| %>
     <div class="mb-3">
       <label for="<%= attribute %>" class="form-label"><%= attribute %></label>

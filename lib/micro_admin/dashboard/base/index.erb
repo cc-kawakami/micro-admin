@@ -2,7 +2,7 @@
   <h2 class="m-0"><%= model_class.name %></h2>
   <div>
     <a
-      href="<%= "/admin/#{model_class.name.underscore}/new" %>"
+      href="<%= "#{self.class.url_base}/#{model_class.name.underscore.pluralize}/new" %>"
       class="btn btn-primary">
         new
     </a>
@@ -27,12 +27,12 @@
         <td><%= record.send(attribute) %></td>
         <% end %>
         <td>
-          <a href="<%= "/admin/#{model_class.name.underscore}/#{record.id}" %>">
+          <a href="<%= "#{self.class.url_base}/#{model_class.name.underscore.pluralize}/#{record.id}" %>">
             show
           </a>
         </td>
         <td>
-          <a href="<%= "/admin/#{model_class.name.underscore}/#{record.id}/edit" %>">
+          <a href="<%= "#{self.class.url_base}/#{model_class.name.underscore.pluralize}/#{record.id}/edit" %>">
             edit
           </a>
         </td>

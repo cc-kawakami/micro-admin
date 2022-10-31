@@ -8,6 +8,8 @@ module MicroAdmin
         __dir__
       ]
 
+      self.url_base = "/admin"
+
       def index(resources)
         @resources = resources
         render
